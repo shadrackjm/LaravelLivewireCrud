@@ -12,6 +12,7 @@
               
         </div>
         <div class="card-body">
+            
             {{-- here will pass the table for all cars with edit and delete button --}}
             <table class="table">
                 <thead>
@@ -34,6 +35,9 @@
                             <td>{{$item->fuel_type}}</td>
                             <td><a href="/edit/car/{{$item->id}}" wire:navigate class="btn btn-primary btn-sm">edit</a></td>
                             <td><button class="btn btn-danger btn-sm" wire:click="delete({{$item->id}})" wire:confirm="Are you sure you want to delete this?">Delete</button></td>
+                            <td><div class="spinner-grow" role="status" wire:loading wire:target="delete({{ $item->id }})">
+                                {{-- <span class="visually-hidden">Loading...</span> --}}
+                              </div></td>
                             {{-- wire:click this listen for click event and will call the delete function let's create this delete function --}}
                         </tr>
                     @endforeach
